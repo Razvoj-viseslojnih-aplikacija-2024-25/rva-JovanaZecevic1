@@ -10,5 +10,4 @@ public interface PacijentRepository  extends JpaRepository<Pacijent, Integer> {
     List<Pacijent> findByPrezimeContainingIgnoreCase(String prezime);
     List<Pacijent> findByOdeljenje(Odeljenje odeljenje);
     List<Pacijent> findByDijagnoza(Dijagnoza dijagnoza);
-    List<Pacijent> findByZdr_osiguranje(boolean zdr_osiguranje);
 }

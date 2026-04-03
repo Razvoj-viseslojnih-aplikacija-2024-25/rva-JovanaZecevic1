@@ -10,6 +10,7 @@ import rva.services.OdeljenjeService;
 
 @Component
 public class OdeljenjeServiceImpl implements OdeljenjeService {
+
     @Autowired
     private OdeljenjeRepository repo;
 

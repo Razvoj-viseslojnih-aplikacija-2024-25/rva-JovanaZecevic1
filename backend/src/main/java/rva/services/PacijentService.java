@@ -12,5 +12,5 @@ public interface PacijentService extends CrudService<Pacijent> {
     List<Pacijent> getPacijentsByPrezime(String prezime);
     List<Pacijent> getPacijentsByOdeljenje(Odeljenje odeljenje);
     List<Pacijent> getPacijentsByDijagnoza(Dijagnoza dijagnoza);
-    List<Pacijent> getPacijentsByZdrOsiguranje(boolean zdrOsiguranje);
+
 }

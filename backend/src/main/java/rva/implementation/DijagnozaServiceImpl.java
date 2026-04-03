@@ -9,6 +9,7 @@ import rva.services.DijagnozaService;
 
 @Component
 public class DijagnozaServiceImpl implements DijagnozaService {
+
     @Autowired
     private DijagnozaRepository repo;
 

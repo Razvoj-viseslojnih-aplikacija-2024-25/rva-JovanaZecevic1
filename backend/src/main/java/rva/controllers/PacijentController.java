@@ -55,14 +55,6 @@ public class PacijentController {
         return ResponseEntity.ok(pacijenti);
     }
 
-    @GetMapping("/pacijent/osiguranje/{osiguranje}")
-    public ResponseEntity<?> getPacijentsByZdrOsiguranje(@PathVariable boolean osiguranje) {
-        List<Pacijent> pacijenti = service.getPacijentsByZdrOsiguranje(osiguranje);
-        if (pacijenti.isEmpty())
-            return new ResponseEntity<>("No patients found with insurance status: " + osiguranje, HttpStatus.NOT_FOUND);
-        return ResponseEntity.ok(pacijenti);
-    }
-
     @GetMapping("/pacijent/odeljenje/{foreignKey}")
     public ResponseEntity<?> getPacijentsByOdeljenje(@PathVariable int foreignKey) {
         Optional<Odeljenje> odeljenje = odeljenjeService.findById(foreignKey);

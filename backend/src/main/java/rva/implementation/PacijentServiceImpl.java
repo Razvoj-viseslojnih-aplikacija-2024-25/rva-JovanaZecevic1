@@ -11,6 +11,7 @@ import rva.services.PacijentService;
 
 @Component
 public class PacijentServiceImpl implements PacijentService {
+
     @Autowired
     private PacijentRepository repo;
 
@@ -58,8 +59,4 @@ public class PacijentServiceImpl implements PacijentService {
         return repo.findByDijagnoza(dijagnoza);
     }
 
-    @Override
-    public List<Pacijent> getPacijentsByZdrOsiguranje(boolean zdrOsiguranje) {
-        return repo.findByZdr_osiguranje(zdrOsiguranje);
-    }
 }
