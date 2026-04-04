@@ -1,0 +1,31 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Add Hospital</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Update Hospital: {{ data.naziv }}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Delete Hospital: {{ data.naziv }}</h3>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Naziv</mat-label>
+        <input matInput name="naziv" [disabled]="flag == 3" [(ngModel)]="data.naziv" required />
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Adresa</mat-label>
+        <input matInput name="adresa" [disabled]="flag == 3" [(ngModel)]="data.adresa" required />
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Budžet</mat-label>
+        <input matInput type="number" name="budzet" [disabled]="flag == 3" [(ngModel)]="data.budzet" required />
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="mat-dialog-actions">
+    <button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" (click)="add()">Save</button>
+    <button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" (click)="update()">Update</button>
+    <button *ngIf="flag == 3" (click)="delete()">Delete</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+</div>

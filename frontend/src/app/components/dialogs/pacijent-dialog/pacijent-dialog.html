@@ -1,0 +1,52 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Add Patient</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Update Patient: {{ data.ime }} {{ data.prezime }}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Delete Patient: {{ data.ime }} {{ data.prezime }}</h3>
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Ime</mat-label>
+        <input matInput name="ime" [disabled]="flag == 3" [(ngModel)]="data.ime" required />
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Prezime</mat-label>
+        <input matInput name="prezime" [disabled]="flag == 3" [(ngModel)]="data.prezime" required />
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Datum rođenja</mat-label>
+        <input matInput type="date" name="datum_rodjenja" [disabled]="flag == 3" [(ngModel)]="data.datum_rodjenja" required />
+      </mat-form-field>
+    </div>
+    <div class="form checkbox-form">
+      <mat-checkbox name="zdr_osiguranje" [disabled]="flag == 3" [(ngModel)]="data.zdr_osiguranje">
+        Zdravstveno osiguranje
+      </mat-checkbox>
+    </div>
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Odeljenje</mat-label>
+        <mat-select [compareWith]="compare" name="odeljenje" [disabled]="flag == 3" [(ngModel)]="data.odeljenje" required>
+          <mat-option *ngFor="let o of odeljenja" [value]="o">{{ o.naziv }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Dijagnoza</mat-label>
+        <mat-select [compareWith]="compare" name="dijagnoza" [disabled]="flag == 3" [(ngModel)]="data.dijagnoza" required>
+          <mat-option *ngFor="let d of dijagnoze" [value]="d">{{ d.naziv }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+  <div class="mat-dialog-actions">
+    <button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" (click)="add()">Save</button>
+    <button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" (click)="update()">Update</button>
+    <button *ngIf="flag == 3" (click)="delete()">Delete</button>
+    <button (click)="cancel()">Cancel</button>
+  </div>
+</div>
