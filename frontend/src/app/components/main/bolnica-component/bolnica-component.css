@@ -1,14 +1,204 @@
+.page-container {
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #b8d9f0 0%, #daedf9 100%);
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.header-icon mat-icon {
+  color: #2563eb;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.header-left h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f2d4a;
+  margin: 0 0 4px;
+  font-family: 'Inter', sans-serif;
+}
+
+.header-left p {
+  font-size: 13px;
+  color: #2c5f82;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.add-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.add-btn mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.table-card {
+  margin: 24px 32px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e8edf2;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
 table {
   width: 100%;
 }
-mat-toolbar {
-  justify-content: center;
+
+.mat-mdc-header-row {
+  background: #f0f7ff !important;
 }
-button {
-  background-color: transparent;
+
+.mat-mdc-header-cell {
+  color: #2563eb !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid #dbeafe !important;
+  padding: 16px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.mat-mdc-cell {
+  color: #1e293b !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  padding: 16px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.mat-mdc-row:nth-child(odd) {
+  background: #ffffff !important;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background: #f0f7ff !important;
+}
+
+.mat-mdc-cell:first-child {
+  color: #2563eb !important;
+  font-weight: 700 !important;
+}
+
+.mat-mdc-row:hover {
+  background: #dbeafe !important;
+  transition: background 0.2s;
+}
+
+.action-btns {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
 }
-mat-toolbar {
-  background-color: #1976d2;
+
+.action-btn mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.action-btn.edit {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.action-btn.edit:hover {
+  background: #dbeafe;
+  transform: scale(1.1);
+}
+
+.action-btn.delete {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.action-btn.delete:hover {
+  background: #fee2e2;
+  transform: scale(1.1);
+}
+
+.mat-mdc-paginator {
+  border-top: 1px solid #e8edf2;
+  background: #f8fafc !important;
+  border-radius: 0 0 16px 16px;
+  font-family: 'Inter', sans-serif !important;
 }

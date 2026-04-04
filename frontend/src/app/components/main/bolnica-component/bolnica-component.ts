@@ -8,10 +8,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { BolnicaDialog } from '../../dialogs/bolnica-dialog/bolnica-dialog';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-bolnica-component',
-  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule],
+  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule,  DecimalPipe],
   templateUrl: './bolnica-component.html',
   styleUrl: './bolnica-component.css',
 })

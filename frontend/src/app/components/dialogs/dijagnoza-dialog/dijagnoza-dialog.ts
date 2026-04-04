@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Dijagnoza } from '../../../models/dijagnoza';
 import { DijagnozaService } from '../../../services/dijagnoza-service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dijagnoza-dialog',
-  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, FormsModule, CommonModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, FormsModule, CommonModule, MatIconModule],
   templateUrl: './dijagnoza-dialog.html',
   styleUrl: './dijagnoza-dialog.css'
 })

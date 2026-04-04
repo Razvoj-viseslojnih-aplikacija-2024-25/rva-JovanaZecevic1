@@ -8,10 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Bolnica } from '../../../models/bolnica';
 import { BolnicaService } from '../../../services/bolnica-service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-bolnica-dialog',
-  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, FormsModule, CommonModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, FormsModule, CommonModule, MatIconModule],
   templateUrl: './bolnica-dialog.html',
   styleUrl: './bolnica-dialog.css'
 })

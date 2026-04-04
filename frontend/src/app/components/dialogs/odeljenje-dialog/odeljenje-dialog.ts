@@ -11,10 +11,11 @@ import { Odeljenje } from '../../../models/odeljenje';
 import { OdeljenjeService } from '../../../services/odeljenje-service';
 import { BolnicaService } from '../../../services/bolnica-service';
 import { Bolnica } from '../../../models/bolnica';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-odeljenje-dialog',
-  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatSelectModule, FormsModule, CommonModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatSelectModule, FormsModule, CommonModule, MatIconModule],
   templateUrl: './odeljenje-dialog.html',
   styleUrl: './odeljenje-dialog.css'
 })

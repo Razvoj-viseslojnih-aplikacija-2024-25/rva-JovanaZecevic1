@@ -1,31 +1,37 @@
-<div class="container">
-  <h3 mat-dialog-title *ngIf="flag == 1">Add Diagnosis</h3>
-  <h3 mat-dialog-title *ngIf="flag == 2">Update Diagnosis: {{ data.naziv }}</h3>
-  <h3 mat-dialog-title *ngIf="flag == 3">Delete Diagnosis: {{ data.naziv }}</h3>
-  <form class="mat-dialog-content" #formControl="ngForm">
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Naziv</mat-label>
-        <input matInput name="naziv" [disabled]="flag == 3" [(ngModel)]="data.naziv" required />
-      </mat-form-field>
+<div class="dialog-container">
+
+  <div class="dialog-header" [class.header-delete]="flag == 3">
+    <div class="dialog-icon" [class.icon-delete]="flag == 3">
+      <mat-icon>{{ flag == 3 ? 'delete' : flag == 2 ? 'edit' : 'add' }}</mat-icon>
     </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Opis</mat-label>
-        <input matInput name="opis" [disabled]="flag == 3" [(ngModel)]="data.opis" required />
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Oznaka</mat-label>
-        <input matInput name="oznaka" [disabled]="flag == 3" [(ngModel)]="data.oznaka" required />
-      </mat-form-field>
-    </div>
-  </form>
-  <div class="mat-dialog-actions">
-    <button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" (click)="add()">Save</button>
-    <button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" (click)="update()">Update</button>
-    <button *ngIf="flag == 3" (click)="delete()">Delete</button>
-    <button (click)="cancel()">Cancel</button>
+    <h3 *ngIf="flag == 1">Dodaj dijagnozu</h3>
+    <h3 *ngIf="flag == 2">Izmeni dijagnozu</h3>
+    <h3 *ngIf="flag == 3">Obriši dijagnozu</h3>
+    <p *ngIf="flag == 2 || flag == 3">{{ data.naziv }}</p>
   </div>
+
+  <form class="dialog-form" #formControl="ngForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Naziv</mat-label>
+      <input matInput name="naziv" [disabled]="flag == 3" [(ngModel)]="data.naziv" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Opis</mat-label>
+      <input matInput name="opis" [disabled]="flag == 3" [(ngModel)]="data.opis" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Oznaka</mat-label>
+      <input matInput name="oznaka" [disabled]="flag == 3" [(ngModel)]="data.oznaka" required />
+    </mat-form-field>
+  </form>
+
+  <div class="dialog-actions">
+    <button class="btn-cancel" (click)="cancel()">Otkaži</button>
+    <button class="btn-confirm" *ngIf="flag == 1" [disabled]="!formControl.valid" (click)="add()">Sačuvaj</button>
+    <button class="btn-confirm" *ngIf="flag == 2" [disabled]="!formControl.valid" (click)="update()">Izmeni</button>
+    <button class="btn-delete" *ngIf="flag == 3" (click)="delete()">Obriši</button>
+  </div>
+
 </div>

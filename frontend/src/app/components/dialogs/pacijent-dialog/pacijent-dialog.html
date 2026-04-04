@@ -1,52 +1,57 @@
-<div class="container">
-  <h3 mat-dialog-title *ngIf="flag == 1">Add Patient</h3>
-  <h3 mat-dialog-title *ngIf="flag == 2">Update Patient: {{ data.ime }} {{ data.prezime }}</h3>
-  <h3 mat-dialog-title *ngIf="flag == 3">Delete Patient: {{ data.ime }} {{ data.prezime }}</h3>
-  <form class="mat-dialog-content" #formControl="ngForm">
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Ime</mat-label>
-        <input matInput name="ime" [disabled]="flag == 3" [(ngModel)]="data.ime" required />
-      </mat-form-field>
+<div class="dialog-container">
+
+  <div class="dialog-header" [class.header-delete]="flag == 3">
+    <div class="dialog-icon" [class.icon-delete]="flag == 3">
+      <mat-icon>{{ flag == 3 ? 'delete' : flag == 2 ? 'edit' : 'add' }}</mat-icon>
     </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Prezime</mat-label>
-        <input matInput name="prezime" [disabled]="flag == 3" [(ngModel)]="data.prezime" required />
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Datum rođenja</mat-label>
-        <input matInput type="date" name="datum_rodjenja" [disabled]="flag == 3" [(ngModel)]="data.datum_rodjenja" required />
-      </mat-form-field>
-    </div>
-    <div class="form checkbox-form">
+    <h3 *ngIf="flag == 1">Dodaj pacijenta</h3>
+    <h3 *ngIf="flag == 2">Izmeni pacijenta</h3>
+    <h3 *ngIf="flag == 3">Obriši pacijenta</h3>
+    <p *ngIf="flag == 2 || flag == 3">{{ data.ime }} {{ data.prezime }}</p>
+  </div>
+
+  <form class="dialog-form" #formControl="ngForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Ime</mat-label>
+      <input matInput name="ime" [disabled]="flag == 3" [(ngModel)]="data.ime" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Prezime</mat-label>
+      <input matInput name="prezime" [disabled]="flag == 3" [(ngModel)]="data.prezime" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Datum rođenja</mat-label>
+      <input matInput type="date" name="datum_rodjenja" [disabled]="flag == 3" [(ngModel)]="data.datum_rodjenja" required />
+    </mat-form-field>
+
+    <div class="checkbox-wrap">
       <mat-checkbox name="zdr_osiguranje" [disabled]="flag == 3" [(ngModel)]="data.zdr_osiguranje">
         Zdravstveno osiguranje
       </mat-checkbox>
     </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Odeljenje</mat-label>
-        <mat-select [compareWith]="compare" name="odeljenje" [disabled]="flag == 3" [(ngModel)]="data.odeljenje" required>
-          <mat-option *ngFor="let o of odeljenja" [value]="o">{{ o.naziv }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Dijagnoza</mat-label>
-        <mat-select [compareWith]="compare" name="dijagnoza" [disabled]="flag == 3" [(ngModel)]="data.dijagnoza" required>
-          <mat-option *ngFor="let d of dijagnoze" [value]="d">{{ d.naziv }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Odeljenje</mat-label>
+      <mat-select [compareWith]="compare" name="odeljenje" [disabled]="flag == 3" [(ngModel)]="data.odeljenje" required>
+        <mat-option *ngFor="let o of odeljenja" [value]="o">{{ o.naziv }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Dijagnoza</mat-label>
+      <mat-select [compareWith]="compare" name="dijagnoza" [disabled]="flag == 3" [(ngModel)]="data.dijagnoza" required>
+        <mat-option *ngFor="let d of dijagnoze" [value]="d">{{ d.naziv }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </form>
-  <div class="mat-dialog-actions">
-    <button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" (click)="add()">Save</button>
-    <button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" (click)="update()">Update</button>
-    <button *ngIf="flag == 3" (click)="delete()">Delete</button>
-    <button (click)="cancel()">Cancel</button>
+
+  <div class="dialog-actions">
+    <button class="btn-cancel" (click)="cancel()">Otkaži</button>
+    <button class="btn-confirm" *ngIf="flag == 1" [disabled]="!formControl.valid" (click)="add()">Sačuvaj</button>
+    <button class="btn-confirm" *ngIf="flag == 2" [disabled]="!formControl.valid" (click)="update()">Izmeni</button>
+    <button class="btn-delete" *ngIf="flag == 3" (click)="delete()">Obriši</button>
   </div>
+
 </div>

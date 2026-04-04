@@ -28,18 +28,20 @@ export class DijagnozaComponent implements OnInit {
     this.loadData();
   }
 
-  public loadData(): void {
-    this.dijagnozaService.getAllDijagnoze().subscribe({
-      next: (data) => {
-        this.dataSource = new MatTableDataSource<Dijagnoza>(data);
+public loadData(): void {
+  this.dijagnozaService.getAllDijagnoze().subscribe({
+    next: (data) => {
+      this.dataSource = new MatTableDataSource<Dijagnoza>(data);
+      setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-      },
-      error: (error) => {
-        console.log(error.message);
-      },
-    });
-  }
+      });
+    },
+    error: (error) => {
+      console.log(error.message);
+    },
+  });
+}
 
   public openDialog(flag: number, id?: number, naziv?: String, opis?: String, oznaka?: String): void {
     const ref = this.dialog.open(DijagnozaDialog, { data: { id, naziv, opis, oznaka } });

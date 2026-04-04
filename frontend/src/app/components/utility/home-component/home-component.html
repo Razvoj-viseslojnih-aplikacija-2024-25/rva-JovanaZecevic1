@@ -1,6 +1,74 @@
 <div class="home-container">
-  <div class="welcome-card">
-    <h1>Dobrodošli u sistem upravljanja bolnicom 🏥</h1>
-    <p>Ovaj sistem omogućava pregled i upravljanje podacima o bolnicama, odeljenjima, dijagnozama i pacijentima.</p>
+
+  <!-- HERO -->
+  <div class="hero-section">
+    <div class="hero-badge">Sistem za upravljanje</div>
+    <h1>Dobrodošli u <span class="highlight">Bolnicu</span></h1>
+    <p>Pregled i evidencija medicinskih podataka na jednom mestu. Brzo, pouzdano i pregledno.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Modula</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Digitalno</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Dostupno</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS -->
+  <div class="cards-section">
+
+    <div class="info-card" routerLink="/bolnica">
+      <div class="card-icon-wrap">
+        <mat-icon>local_hospital</mat-icon>
+      </div>
+      <h3>Bolnice</h3>
+      <p>Upravljajte podacima o bolnicama i njihovim budžetima</p>
+      <div class="card-arrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+    </div>
+
+    <div class="info-card" routerLink="/odeljenje">
+      <div class="card-icon-wrap">
+        <mat-icon>meeting_room</mat-icon>
+      </div>
+      <h3>Odeljenja</h3>
+      <p>Pratite odeljenja i njihove lokacije unutar bolnica</p>
+      <div class="card-arrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+    </div>
+
+    <div class="info-card" routerLink="/dijagnoza">
+      <div class="card-icon-wrap">
+        <mat-icon>medical_services</mat-icon>
+      </div>
+      <h3>Dijagnoze</h3>
+      <p>Evidencija dijagnoza sa oznakama i opisima</p>
+      <div class="card-arrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+    </div>
+
+    <div class="info-card" routerLink="/pacijent">
+      <div class="card-icon-wrap">
+        <mat-icon>person</mat-icon>
+      </div>
+      <h3>Pacijenti</h3>
+      <p>Kompletna evidencija pacijenata i njihovih podataka</p>
+      <div class="card-arrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+    </div>
+
   </div>
 </div>

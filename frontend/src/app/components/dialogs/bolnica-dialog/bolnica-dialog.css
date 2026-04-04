@@ -1,55 +1,133 @@
-.container {
+.dialog-container {
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+  width: 400px;
+}
+
+.dialog-header {
+  background: linear-gradient(135deg, #b8d9f0 0%, #daedf9 100%);
+  padding: 28px 32px;
   display: flex;
   flex-direction: column;
-  max-width: 380px;
-  margin: 0 auto;
   align-items: center;
-  padding: 32px 24px;
-  gap: 12px;
-  background-color: #ffffff;
-}
-
-h3 {
+  gap: 8px;
   text-align: center;
-  color: #4a6fa5;
-  font-weight: 500;
 }
 
-form {
+.dialog-header.header-delete {
+  background: linear-gradient(135deg, #fecaca 0%, #fef2f2 100%);
+}
+
+.dialog-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.dialog-icon mat-icon {
+  color: #2563eb;
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
+}
+
+.dialog-icon.icon-delete mat-icon {
+  color: #ef4444;
+}
+
+.dialog-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f2d4a;
+  margin: 0;
+}
+
+.dialog-header p {
+  font-size: 13px;
+  color: #2c5f82;
+  margin: 0;
+}
+
+.dialog-form {
+  padding: 24px 32px 8px;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 8px;
+  gap: 4px;
 }
 
-.mat-dialog-actions {
+.full-width {
+  width: 100%;
+}
+
+.dialog-actions {
+  padding: 16px 32px 28px;
   display: flex;
-  width: 100%;
-  justify-content: center;
   gap: 12px;
-  margin-top: 8px;
+  justify-content: flex-end;
 }
 
-.mat-dialog-actions button {
-  padding: 10px 24px;
-  font-size: 15px;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
+.btn-cancel {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  background: #f1f5f9;
+  border: 1px solid #e8edf2;
+  border-radius: 10px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
 }
 
-.mat-dialog-actions button:first-child {
-  background-color: #A5D6A7;
-  color: #2e7d32;
+.btn-cancel:hover {
+  background: #e2e8f0;
 }
 
-.mat-dialog-actions button:last-child {
-  background-color: #EF9A9A;
-  color: #c62828;
+.btn-confirm {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: #2563eb;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.3);
 }
 
-.mat-dialog-actions button:hover {
-  opacity: 0.85;
+.btn-confirm:hover {
+  background: #1d4ed8;
 }
+
+.btn-confirm:disabled {
+  background: #93c5fd;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.btn-delete {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: #ef4444;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
+

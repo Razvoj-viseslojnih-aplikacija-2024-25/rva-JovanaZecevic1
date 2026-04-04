@@ -1,33 +1,39 @@
-<div class="container">
-  <h3 mat-dialog-title *ngIf="flag == 1">Add Department</h3>
-  <h3 mat-dialog-title *ngIf="flag == 2">Update Department: {{ data.naziv }}</h3>
-  <h3 mat-dialog-title *ngIf="flag == 3">Delete Department: {{ data.naziv }}</h3>
-  <form class="mat-dialog-content" #formControl="ngForm">
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Naziv</mat-label>
-        <input matInput name="naziv" [disabled]="flag == 3" [(ngModel)]="data.naziv" required />
-      </mat-form-field>
+<div class="dialog-container">
+
+  <div class="dialog-header" [class.header-delete]="flag == 3">
+    <div class="dialog-icon" [class.icon-delete]="flag == 3">
+      <mat-icon>{{ flag == 3 ? 'delete' : flag == 2 ? 'edit' : 'add' }}</mat-icon>
     </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Lokacija</mat-label>
-        <input matInput name="lokacija" [disabled]="flag == 3" [(ngModel)]="data.lokacija" required />
-      </mat-form-field>
-    </div>
-    <div class="form">
-      <mat-form-field appearance="outline">
-        <mat-label>Bolnica</mat-label>
-        <mat-select [compareWith]="compare" name="bolnica" [disabled]="flag == 3" [(ngModel)]="data.bolnica" required>
-          <mat-option *ngFor="let b of bolnice" [value]="b">{{ b.naziv }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-  </form>
-  <div class="mat-dialog-actions">
-    <button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" (click)="add()">Save</button>
-    <button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" (click)="update()">Update</button>
-    <button *ngIf="flag == 3" (click)="delete()">Delete</button>
-    <button (click)="cancel()">Cancel</button>
+    <h3 *ngIf="flag == 1">Dodaj odeljenje</h3>
+    <h3 *ngIf="flag == 2">Izmeni odeljenje</h3>
+    <h3 *ngIf="flag == 3">Obriši odeljenje</h3>
+    <p *ngIf="flag == 2 || flag == 3">{{ data.naziv }}</p>
   </div>
+
+  <form class="dialog-form" #formControl="ngForm">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Naziv</mat-label>
+      <input matInput name="naziv" [disabled]="flag == 3" [(ngModel)]="data.naziv" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Lokacija</mat-label>
+      <input matInput name="lokacija" [disabled]="flag == 3" [(ngModel)]="data.lokacija" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Bolnica</mat-label>
+      <mat-select [compareWith]="compare" name="bolnica" [disabled]="flag == 3" [(ngModel)]="data.bolnica" required>
+        <mat-option *ngFor="let b of bolnice" [value]="b">{{ b.naziv }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div class="dialog-actions">
+    <button class="btn-cancel" (click)="cancel()">Otkaži</button>
+    <button class="btn-confirm" *ngIf="flag == 1" [disabled]="!formControl.valid" (click)="add()">Sačuvaj</button>
+    <button class="btn-confirm" *ngIf="flag == 2" [disabled]="!formControl.valid" (click)="update()">Izmeni</button>
+    <button class="btn-delete" *ngIf="flag == 3" (click)="delete()">Obriši</button>
+  </div>
+
 </div>

@@ -14,10 +14,11 @@ import { OdeljenjeService } from '../../../services/odeljenje-service';
 import { DijagnozaService } from '../../../services/dijagnoza-service';
 import { Odeljenje } from '../../../models/odeljenje';
 import { Dijagnoza } from '../../../models/dijagnoza';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-pacijent-dialog',
-  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule, FormsModule, CommonModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule, MatSelectModule, MatCheckboxModule, FormsModule, CommonModule, MatIconModule],
   templateUrl: './pacijent-dialog.html',
   styleUrl: './pacijent-dialog.css'
 })

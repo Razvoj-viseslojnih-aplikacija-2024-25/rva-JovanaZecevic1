@@ -1,24 +1,122 @@
-.container {
+.author-container {
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, #b8d9f0 0%, #daedf9 100%);
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+}
+
+.hero-section h1 {
+  font-size: 38px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+  color: #0f172a;
+}
+
+.content {
+  padding: 48px;
   display: flex;
   justify-content: center;
-  padding: 60px 20px;
 }
-.card {
-  max-width: 600px;
+
+.author-card {
+  background: white;
+  border-radius: 20px;
+  padding: 48px 40px;
+  border: 1px solid #e8edf2;
+  max-width: 520px;
   width: 100%;
-  padding: 40px;
-  background-color: #E3F2FD;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
 }
-h1 {
-  color: #1565C0;
-  margin-bottom: 16px;
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  color: white;
+  font-size: 26px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
 }
-p {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.6;
-  margin: 8px 0;
+
+.author-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px;
+}
+
+.author-tag {
+  font-size: 13px;
+  color: #2563eb;
+  font-weight: 500;
+  background: #eff6ff;
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.divider {
+  height: 1px;
+  background: #e8edf2;
+  margin: 24px 0;
+}
+
+.author-card p {
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.8;
+  margin: 0 0 28px;
+}
+
+.tech-section {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.tech-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9aa5b4;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tech-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag {
+  background: white;
+  border: 1px solid #e8edf2;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
 }
