@@ -5,7 +5,7 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
-html {
+/*html {
   height: 100%;
   @include mat.theme(
     (
@@ -17,6 +17,22 @@ html {
       density: 0,
     )
   );
+} */
+
+// Custom table styles
+html {
+  --mat-table-header-headline-color: #2563eb;
+  --mat-table-header-headline-size: 11px;
+  --mat-table-header-headline-weight: 700;
+  --mat-table-header-container-height: 52px;
+  --mat-table-background-color: white;
+  --mat-table-row-item-label-text-color: #1e293b;
+  --mat-table-row-item-label-text-size: 14px;
+  --mat-table-row-item-label-text-weight: 500;
+  --mat-table-row-item-container-height: 52px;
+  --mat-table-row-item-outline-color: #f1f5f9;
+  --mat-paginator-container-background-color: #f8fafc;
+  --mat-table-header-container-background-color: #f0f7ff;
 }
 
 body {
