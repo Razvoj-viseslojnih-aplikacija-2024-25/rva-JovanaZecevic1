@@ -212,3 +212,40 @@ table {
   border-radius: 0 0 16px 16px;
   font-family: 'Inter', sans-serif ;
 }
+
+.search-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 24px 32px 16px 32px;
+}
+
+.search-select {
+  width: 180px;
+}
+
+.search-input {
+  flex: 1;
+}
+
+.search-bar .mat-mdc-form-field {
+  margin-bottom: -1.25em;
+}
+
+.reset-btn {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: 1.5px solid #3b82f6;
+  background: white;
+  color: #2563eb;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-btn:hover {
+  background: #eff6ff;
+}

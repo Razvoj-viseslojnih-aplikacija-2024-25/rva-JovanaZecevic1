@@ -24,4 +24,12 @@ export class DijagnozaService {
   public deleteDijagnoza(id: number): Observable<any> {
     return this.httpClient.delete(`http://localhost:8080/dijagnoza/${id}`, {responseType: 'text'});
   }
+
+  public getDijagnozasByNaziv(naziv: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/dijagnoza/naziv/${naziv}`);
+  }
+
+  public getDijagnozasByOznaka(oznaka: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/dijagnoza/oznaka/${oznaka}`);
+  }
 }

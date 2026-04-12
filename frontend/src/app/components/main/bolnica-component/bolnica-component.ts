@@ -9,16 +9,22 @@ import { BolnicaDialog } from '../../dialogs/bolnica-dialog/bolnica-dialog';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { DecimalPipe } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-bolnica-component',
-  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule,  DecimalPipe],
+  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule,  DecimalPipe, MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './bolnica-component.html',
   styleUrl: './bolnica-component.css',
 })
 export class BolnicaComponent implements OnInit {
   displayedColumns = ['id', 'naziv', 'adresa', 'budzet', 'actions'];
   dataSource!: MatTableDataSource<Bolnica>;
+  //za custom metode
+  searchValue: string = '';
+  searchType: string = 'naziv';
 
   constructor(private bolnicaService: BolnicaService, private dialog: MatDialog) {}
 
@@ -49,6 +55,33 @@ export class BolnicaComponent implements OnInit {
     ref.afterClosed().subscribe((response) => {
       if (response === 1) {
         this.ngOnInit();
+      }
+    });
+  }
+
+  public search(): void {
+    if (!this.searchValue.trim()) {
+      this.loadData();
+      return;
+    }
+
+    let request$;
+    if (this.searchType === 'naziv') {
+      request$ = this.bolnicaService.getBolnicasByNaziv(this.searchValue);
+    } else if (this.searchType === 'adresa') {
+      request$ = this.bolnicaService.getBolnicasByAdresa(this.searchValue);
+    } else {
+      request$ = this.bolnicaService.getBolnicasByBudzet(Number(this.searchValue));
+    }
+
+    request$.subscribe({
+      next: (data) => {
+        this.dataSource = new MatTableDataSource<Bolnica>(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      },
+      error: () => {
+        this.dataSource = new MatTableDataSource<Bolnica>([]);
       }
     });
   }

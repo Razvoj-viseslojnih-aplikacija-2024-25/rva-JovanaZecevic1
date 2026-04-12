@@ -32,4 +32,12 @@ export class PacijentService {
   public deletePacijent(id: number): Observable<any> {
     return this.httpClient.delete(`http://localhost:8080/pacijent/${id}`, {responseType: 'text'});
   }
+
+  public getPacijentsByIme(ime: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/pacijent/ime/${ime}`);
+  }
+
+  public getPacijentsByPrezime(prezime: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/pacijent/prezime/${prezime}`);
+  }
 }

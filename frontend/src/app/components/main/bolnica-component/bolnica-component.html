@@ -16,6 +16,24 @@
     </button>
   </div>
 
+  <div class="search-bar">
+    <mat-form-field appearance="outline" class="search-select">
+      <mat-select [(ngModel)]="searchType">
+        <mat-option value="naziv">Naziv</mat-option>
+        <mat-option value="adresa">Adresa</mat-option>
+        <mat-option value="budzet">Budžet (≥)</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="search-input">
+      <input matInput [(ngModel)]="searchValue" placeholder="Unesite vrednost..." 
+            (keyup.enter)="search()"/>
+    </mat-form-field>
+
+    <button class="add-btn" (click)="search()">Pretraži</button>
+    <button class="reset-btn" (click)="searchValue = ''; loadData()">Resetuj</button>
+  </div>
+
   <div class="table-card">
     <table mat-table matSort [dataSource]="dataSource">
 

@@ -8,16 +8,21 @@ import { MatDialog } from '@angular/material/dialog';
 import { DijagnozaDialog } from '../../dialogs/dijagnoza-dialog/dijagnoza-dialog';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dijagnoza-component',
-  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule],
+  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule, MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './dijagnoza-component.html',
   styleUrl: './dijagnoza-component.css',
 })
 export class DijagnozaComponent implements OnInit {
   displayedColumns = ['id', 'naziv', 'opis', 'oznaka', 'actions'];
   dataSource!: MatTableDataSource<Dijagnoza>;
+  searchValue: string = '';
+  searchType: string = 'naziv';
 
   constructor(private dijagnozaService: DijagnozaService, private dialog: MatDialog) {}
 
@@ -52,4 +57,29 @@ public loadData(): void {
       }
     });
   }
+
+  public search(): void {
+    if (!this.searchValue.trim()) {
+      this.loadData();
+      return;
+    }
+
+    let request$;
+    if (this.searchType === 'naziv') {
+      request$ = this.dijagnozaService.getDijagnozasByNaziv(this.searchValue);
+    } else {
+      request$ = this.dijagnozaService.getDijagnozasByOznaka(this.searchValue);
+    }
+
+    request$.subscribe({
+      next: (data) => {
+        this.dataSource = new MatTableDataSource<Dijagnoza>(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      },
+      error: () => {
+        this.dataSource = new MatTableDataSource<Dijagnoza>([]);
+      }
+    });
+  } 
 }

@@ -28,4 +28,13 @@ export class OdeljenjeService {
   public deleteOdeljenje(id: number): Observable<any> {
     return this.httpClient.delete(`http://localhost:8080/odeljenje/${id}`, {responseType: 'text'});
   }
+
+  public getOdeljenjaByNaziv(naziv: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/odeljenje/naziv/${naziv}`);
+  }
+
+  public getOdeljenjaByLokacija(lokacija: string): Observable<any> {
+   return this.httpClient.get(`http://localhost:8080/odeljenje/lokacija/${lokacija}`);
+  }
+
 }

@@ -8,16 +8,22 @@ import { MatDialog } from '@angular/material/dialog';
 import { PacijentDialog } from '../../dialogs/pacijent-dialog/pacijent-dialog';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pacijent-component',
-  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule],
+  imports: [MatTableModule, MatIconModule, MatToolbarModule, MatSortModule, MatPaginatorModule, MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './pacijent-component.html',
   styleUrl: './pacijent-component.css',
 })
 export class PacijentComponent implements OnInit {
   displayedColumns = ['id', 'ime', 'prezime', 'zdr_osiguranje', 'datum_rodjenja', 'odeljenje', 'dijagnoza', 'actions'];
   dataSource!: MatTableDataSource<Pacijent>;
+  searchValue: string = '';
+  searchType: string = 'ime';
+
 
   constructor(private pacijentService: PacijentService, private dialog: MatDialog) {}
 
@@ -47,6 +53,31 @@ export class PacijentComponent implements OnInit {
     ref.afterClosed().subscribe((response) => {
       if (response === 1) {
         this.ngOnInit();
+      }
+    });
+  }
+
+  public search(): void {
+    if (!this.searchValue.trim()) {
+      this.loadData();
+      return;
+    }
+
+    let request$;
+    if (this.searchType === 'ime') {
+      request$ = this.pacijentService.getPacijentsByIme(this.searchValue);
+    } else {
+      request$ = this.pacijentService.getPacijentsByPrezime(this.searchValue);
+    }
+
+    request$.subscribe({
+      next: (data) => {
+        this.dataSource = new MatTableDataSource<Pacijent>(data);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      },
+      error: () => {
+        this.dataSource = new MatTableDataSource<Pacijent>([]);
       }
     });
   }

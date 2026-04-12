@@ -24,4 +24,16 @@ export class BolnicaService {
   public deleteBolnica(id: number): Observable<any> {
     return this.httpClient.delete(`http://localhost:8080/bolnica/${id}`, {responseType: 'text'});
   }
+
+  public getBolnicasByNaziv(naziv: string): Observable<any> {
+  return this.httpClient.get(`http://localhost:8080/bolnica/naziv/${naziv}`);
+}
+
+  public getBolnicasByAdresa(adresa: string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/bolnica/adresa/${adresa}`);
+  }
+
+  public getBolnicasByBudzet(budzet: number): Observable<any> {
+    return this.httpClient.get(`http://localhost:8080/bolnica/budzet/${budzet}`);
+  }
 }
